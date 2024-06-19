@@ -1,7 +1,7 @@
 package System.bank;
 
 import java.util.ArrayList;
-import java.util.UUID;
+import java.util.Random;
 
 public class Bank {
 
@@ -20,15 +20,53 @@ public class Bank {
         this.accounts = new ArrayList<Account>();
     }
 
-    public static String getNewUserUID () {
-        return UUID.randomUUID().toString();
+    public String getNewUserUID() {
+        String uuid;
+        Random rng = new Random();
+        int len = 6;
+        boolean nonUnique;
+
+        do {
+            uuid = "";
+            for (int c = 0; c < len; c++) {
+                uuid += ((Integer)rng.nextInt(10)).toString();
+            }
+
+            nonUnique = false;
+            for (User u : this.users) {
+                if (uuid.compareTo(u.getUID()) == 0) {
+                    nonUnique = true;
+                    break;
+                }
+            }
+        } while (nonUnique);
+        return uuid;
     }
 
-    public static String getNewAccountUID () {
-        return UUID.randomUUID().toString();
+    public String getNewAccountUID() {
+        String uuid;
+        Random rng = new Random();
+        int len = 6;
+        boolean nonUnique;
+
+        do {
+            uuid = "";
+            for (int c = 0; c < len; c++) {
+                uuid += ((Integer)rng.nextInt(10)).toString();
+            }
+
+            nonUnique = false;
+            for (User u : this.users) {
+                if (uuid.compareTo(u.getUID()) == 0) {
+                    nonUnique = true;
+                    break;
+                }
+            }
+        } while (nonUnique);
+        return uuid;
     }
 
-    public User createNewUser (String firstName, String lastName, String pin) {
+    public User addUser (String firstName, String lastName, String pin) {
         User newUser = new User(firstName, lastName, pin, this);
         this.users.add(newUser);
 
@@ -52,5 +90,9 @@ public class Bank {
 
     public void addAccount(Account acc) {
         this.accounts.add(acc);
+    }
+
+    public String getName() {
+        return this.bankName;
     }
 }

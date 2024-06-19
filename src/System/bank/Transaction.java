@@ -27,4 +27,8 @@ public class Transaction {
         this(amount, fromAccount);
         this.memo = memo;
     }
+
+    public double getAmount() {
+        return this.amount;
+    }
 }

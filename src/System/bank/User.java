@@ -1,5 +1,6 @@
 package System.bank;
 
+import javax.swing.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -34,13 +35,15 @@ public class User {
         }
 
         // Giving new ID for the user
-        this.uid = Bank.getNewUserUID();
+        this.uid = bank.getNewUserUID();
 
         // Create empty list of accounts
         this.accounts = new ArrayList<Account>();
 
         // Print log message
-        System.out.printf("New user %s, %s with ID %s was created!", lastName, firstName, this.uid);
+        JOptionPane.showMessageDialog(null, "New user " + lastName + ", "
+                + firstName + " with ID " + this.uid + " was created!");
+        //System.out.printf("New user %s, %s with ID %s was created!", lastName, firstName, this.uid);
     }
 
     public void addAccount (Account acc) {
@@ -62,5 +65,12 @@ public class User {
         }
 
         return false;
+    }
+
+    public void printAccountsSummary(JTextArea txtArea) {
+        txtArea.append(this.firstName + "s's accounts summary");
+        for (int a = 0; a < this.accounts.size(); a++) {
+            txtArea.append(this.accounts.get(a).getSummaryLine() + ")\n");
+        }
     }
 }
