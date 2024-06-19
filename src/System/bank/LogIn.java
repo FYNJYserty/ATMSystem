@@ -23,6 +23,8 @@ public class LogIn {
         JButton LogInButton = new JButton("LogIn");
         LogInButton.setBounds(200, 300, 100, 30);
 
+        LogIn.add(loginLabel);
+        LogIn.add(passwordLabel);
         LogIn.add(loginField);
         LogIn.add(passwordField);
         LogIn.add(LogInButton);
