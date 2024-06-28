@@ -70,7 +70,15 @@ public class User {
     public void printAccountsSummary(JTextArea txtArea) {
         txtArea.append(this.firstName + "s's accounts summary");
         for (int a = 0; a < this.accounts.size(); a++) {
-            txtArea.append(this.accounts.get(a).getSummaryLine() + ")\n");
+            txtArea.append(this.accounts.get(a).getSummaryLine() + ")\n" + a);
         }
+    }
+
+    public int numAccounts() {
+        return this.accounts.size();
+    }
+
+    public void printAcctTransHistory (int acctIdx) {
+
     }
 }
