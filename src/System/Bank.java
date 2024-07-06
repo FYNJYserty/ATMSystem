@@ -1,4 +1,4 @@
-package System.bank;
+package System;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,12 +14,20 @@ public class Bank {
     // The accounts of this bank
     private ArrayList<Account> accounts;
 
+    /**
+     * Constructor
+     * @param nameOfBank
+     */
     public Bank (String nameOfBank) {
         this.bankName = nameOfBank;
         this.users = new ArrayList<User>();
         this.accounts = new ArrayList<Account>();
     }
 
+    /**
+     * Getting user's UID at this bank
+     * @return
+     */
     public String getNewUserUID() {
         String uuid;
         Random rng = new Random();
@@ -43,6 +51,10 @@ public class Bank {
         return uuid;
     }
 
+    /**
+     * Getting account's UID at this bank
+     * @return
+     */
     public String getNewAccountUID() {
         String uuid;
         Random rng = new Random();
@@ -66,6 +78,13 @@ public class Bank {
         return uuid;
     }
 
+    /**
+     * Add new user at the bank
+     * @param firstName
+     * @param lastName
+     * @param pin
+     * @return
+     */
     public User addUser (String firstName, String lastName, String pin) {
         User newUser = new User(firstName, lastName, pin, this);
         this.users.add(newUser);
@@ -78,6 +97,12 @@ public class Bank {
         return newUser;
     }
 
+    /**
+     * User login
+     * @param userID
+     * @param pin
+     * @return
+     */
     public User userLogin (String userID, String pin) {
         for (User u : this.users) {
             if (u.getUID().compareTo(userID) == 0 && u.validatePin(pin)) {
@@ -88,10 +113,18 @@ public class Bank {
         return null;
     }
 
+    /**
+     * Add new account at the bank
+     * @param acc
+     */
     public void addAccount(Account acc) {
         this.accounts.add(acc);
     }
 
+    /**
+     * Getting name of bank
+     * @return
+     */
     public String getName() {
         return this.bankName;
     }

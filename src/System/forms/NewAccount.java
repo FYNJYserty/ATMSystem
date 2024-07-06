@@ -1,4 +1,4 @@
-package System.bank.forms;
+package System.forms;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -6,12 +6,13 @@ import java.awt.event.ActionListener;
 
 public class NewAccount extends JFrame {
 
+    // Constructor
     public NewAccount() {
-        // Настройки формы
+        // Form settings
         JFrame NewAcc = new JFrame();
         NewAcc.setSize(500, 400);
 
-        // Создание элементов
+        // Creating elements
         JLabel loginLabel = new JLabel("Name");
         loginLabel.setBounds(100, 50, 100, 30);
 
@@ -39,7 +40,7 @@ public class NewAccount extends JFrame {
         JButton LogInButton = new JButton("Create new");
         LogInButton.setBounds(200, 250, 150, 30);
 
-        // Добавление элементов в форму
+        // Adding elements to form
         NewAcc.add(loginLabel);
         NewAcc.add(surnameLabel);
         NewAcc.add(passwordLabel);
@@ -50,7 +51,7 @@ public class NewAccount extends JFrame {
         NewAcc.add(bankField);
         NewAcc.add(LogInButton);
 
-        // Скрипты
+        // Scripts
         LogInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,6 +63,7 @@ public class NewAccount extends JFrame {
                     ATMForm.password = passwordField.getText();
                     ATMForm.bank = bankField.getText();
                     ATMForm.stage = 1;
+                    NewAcc.dispose();
                 }
                 else {
                     JOptionPane.showMessageDialog(null, "Все поля должны быть заполнены!");
@@ -70,7 +72,7 @@ public class NewAccount extends JFrame {
             }
         });
 
-        // Настройки формы
+        // Form settings
         NewAcc.setLayout(null);
         NewAcc.setVisible(true);
     }

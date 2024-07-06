@@ -1,4 +1,4 @@
-package System.bank;
+package System;
 
 import javax.swing.*;
 import java.security.MessageDigest;
@@ -46,14 +46,35 @@ public class User {
         //System.out.printf("New user %s, %s with ID %s was created!", lastName, firstName, this.uid);
     }
 
+    /**
+     * Add new account to user
+     * @param acc
+     */
     public void addAccount (Account acc) {
         this.accounts.add(acc);
     }
 
+    /**
+     * Get UID
+     * @return
+     */
     public String getUID () {
         return this.uid;
     }
 
+    /**
+     * Get user's name
+     * @return
+     */
+    public String getName () {
+        return this.firstName;
+    }
+
+    /**
+     * Validate pin
+     * @param pin
+     * @return
+     */
     public boolean validatePin (String pin) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -67,18 +88,60 @@ public class User {
         return false;
     }
 
+    /**
+     * Print account's summary
+     * @param txtArea
+     */
     public void printAccountsSummary(JTextArea txtArea) {
-        txtArea.append(this.firstName + "s's accounts summary");
+        txtArea.append(String.format("\n%s's accounts summary\n", this.firstName));
         for (int a = 0; a < this.accounts.size(); a++) {
-            txtArea.append(this.accounts.get(a).getSummaryLine() + ")\n" + a);
+            txtArea.append(String.format("  %d) %s\n", a + 1, this.accounts.get(a).getSummaryLine()));
         }
+        txtArea.append("\n");
     }
 
+    /**
+     * Get count of user's accounts
+     * @return
+     */
     public int numAccounts() {
         return this.accounts.size();
     }
 
-    public void printAcctTransHistory (int acctIdx) {
+    /**
+     * Print transfer history of this account
+     * @param acctIdx
+     * @param textArea
+     */
+    public void printAcctTransHistory (int acctIdx, JTextArea textArea) {
+        this.accounts.get(acctIdx).printTransHistory(textArea);
+    }
 
+    /**
+     * Get balance of account
+     * @param acctIdx
+     * @return
+     */
+    public double getAcctBalance (int acctIdx) {
+        return this.accounts.get(acctIdx).getBalance();
+    }
+
+    /**
+     * Get account's UID
+     * @param acctIdx
+     * @return
+     */
+    public String getAcctUUID (int acctIdx) {
+        return this.accounts.get(acctIdx).getUID();
+    }
+
+    /**
+     * Add transaction to user's account
+     * @param acctIdx
+     * @param amount
+     * @param memo
+     */
+    public void addAcctTransaction (int acctIdx, double amount, String memo) {
+        this.accounts.get(acctIdx).addTransaction(amount, memo);
     }
 }
