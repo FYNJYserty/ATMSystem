@@ -12,8 +12,8 @@ public class LogIn extends JFrame {
         LogIn.setSize(500, 320);
 
         // Создание элементов
-        JLabel loginLabel = new JLabel("ID");
-        loginLabel.setBounds(100, 50, 100, 30);
+        JLabel loginLabel = new JLabel("ID"); // Создание элемента
+        loginLabel.setBounds(100, 50, 100, 30); // Настройки элемента
 
         JLabel passwordLabel = new JLabel("Password");
         passwordLabel.setBounds(100, 100, 100, 30);
@@ -46,10 +46,14 @@ public class LogIn extends JFrame {
         LogInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Все поля должны быть заполнены
                 if (!loginField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
+                    // Закрытие формы
                     ATMForm.isOpenLogin = false;
                     LogIn.setVisible(false);
+                    // Стадия регистрации
                     ATMForm.stage = 2;
+                    // Присвоение переменных
                     ATMForm.uid = loginField.getText();
                     ATMForm.password = passwordField.getText();
                     ATMForm.bank = bankField.getText();

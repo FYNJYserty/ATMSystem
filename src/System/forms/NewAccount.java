@@ -6,15 +6,15 @@ import java.awt.event.ActionListener;
 
 public class NewAccount extends JFrame {
 
-    // Constructor
+    // Конструктор
     public NewAccount() {
-        // Form settings
+        // Настройки формы
         JFrame NewAcc = new JFrame();
         NewAcc.setSize(500, 400);
 
-        // Creating elements
-        JLabel loginLabel = new JLabel("Name");
-        loginLabel.setBounds(100, 50, 100, 30);
+        // Создание элементов формы
+        JLabel loginLabel = new JLabel("Name"); // Создание нового элемента
+        loginLabel.setBounds(100, 50, 100, 30); // Настройки элемента
 
         JLabel surnameLabel = new JLabel("Surname");
         surnameLabel.setBounds(100, 100, 100, 30);
@@ -40,7 +40,7 @@ public class NewAccount extends JFrame {
         JButton LogInButton = new JButton("Create new");
         LogInButton.setBounds(200, 250, 150, 30);
 
-        // Adding elements to form
+        // Добавление элементов в форму
         NewAcc.add(loginLabel);
         NewAcc.add(surnameLabel);
         NewAcc.add(passwordLabel);
@@ -51,17 +51,22 @@ public class NewAccount extends JFrame {
         NewAcc.add(bankField);
         NewAcc.add(LogInButton);
 
-        // Scripts
+        // Скрипты
+        // Кнопка регистрации нового аккаунта
         LogInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Все поля должны быть заполнены
                 if (!loginField.getText().isEmpty() && !surnameField.getText().isEmpty() && !passwordField.getText().isEmpty() && !bankField.getText().isEmpty()) {
+                    // Закрытие окна
                     ATMForm.isOpenLogin = false;
                     NewAcc.setVisible(false);
+                    // Присвоение полей к статическим переменным
                     ATMForm.name = loginField.getText();
                     ATMForm.surname = surnameField.getText();
                     ATMForm.password = passwordField.getText();
                     ATMForm.bank = bankField.getText();
+                    // Стадия регистрации
                     ATMForm.stage = 1;
                     NewAcc.dispose();
                 }
@@ -72,7 +77,7 @@ public class NewAccount extends JFrame {
             }
         });
 
-        // Form settings
+        // Настройки формы
         NewAcc.setLayout(null);
         NewAcc.setVisible(true);
     }

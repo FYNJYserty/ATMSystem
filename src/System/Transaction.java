@@ -4,20 +4,20 @@ import java.util.Date;
 
 public class Transaction {
 
-    // The amount of this transaction
+    // Сумма транзакции
     private double amount;
 
-    // The memo for this transaction
+    // Сообщение для транзакции
     private String memo;
 
-    // The time and date of this transaction
+    // Время и дата транзакции
     private Date timestamp;
 
-    // The account in which the transaction was performed
+    // Аккаунт на котором была совершена транзакция
     private Account fromAccount;
 
     /**
-     * Constructor
+     * Конструктор 1
      * @param amount
      * @param fromAccount
      */
@@ -29,7 +29,7 @@ public class Transaction {
     }
 
     /**
-     * Constructor
+     * Конструктор 2
      * @param amount
      * @param memo
      * @param fromAccount
@@ -40,7 +40,7 @@ public class Transaction {
     }
 
     /**
-     * Getting amount
+     * Геттер суммы транзакции
      * @return
      */
     public double getAmount() {
@@ -48,7 +48,7 @@ public class Transaction {
     }
 
     /**
-     * Getting summary
+     * Вывод информации о транзакции
      * @return
      */
     public String getSummaryLine () {

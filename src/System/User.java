@@ -6,25 +6,25 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class User {
-    // First name
+    // Имя
     private String firstName;
-    // Last name
+    // Фамилия
     private String lastName;
-    // User id
+    // Пользовательский id
     private String uid;
-    // The MD5 hash of the user's pin code
+    // MD5 хеширование пароля пользователя
     private byte pinHash[];
-    // The list of accounts for this user
+    // Лист аккаунтов для этого пользователя
     private ArrayList<Account> accounts;
 
-    // Creating new user
+    // Конструктор пользователя
     public User(String firstName, String lastName, String pinCode, Bank bank) {
 
-        // Giving first and last name for the user
+        // Присваиваем имя и фамилию
         this.firstName = firstName;
         this.lastName = lastName;
 
-        // Giving the MD5 hash of the user's pin code for security
+        // MD5 хеширование пароля для безопасности
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             this.pinHash = md.digest(pinCode.getBytes());
@@ -34,20 +34,19 @@ public class User {
             System.exit(1);
         }
 
-        // Giving new ID for the user
+        // Присваивание нового ID для пользователя
         this.uid = bank.getNewUserUID();
 
-        // Create empty list of accounts
+        // Создание пустого листа для аккаунтов
         this.accounts = new ArrayList<Account>();
 
-        // Print log message
+        // Сообщение об успешном создании
         JOptionPane.showMessageDialog(null, "New user " + lastName + ", "
                 + firstName + " with ID " + this.uid + " was created!");
-        //System.out.printf("New user %s, %s with ID %s was created!", lastName, firstName, this.uid);
     }
 
     /**
-     * Add new account to user
+     * Добавление новго аккаунта пользователю
      * @param acc
      */
     public void addAccount (Account acc) {
@@ -55,7 +54,7 @@ public class User {
     }
 
     /**
-     * Get UID
+     * Геттер UID
      * @return
      */
     public String getUID () {
@@ -63,7 +62,7 @@ public class User {
     }
 
     /**
-     * Get user's name
+     * Геттер имени
      * @return
      */
     public String getName () {
@@ -71,7 +70,7 @@ public class User {
     }
 
     /**
-     * Validate pin
+     * Хеширование пароля
      * @param pin
      * @return
      */
@@ -89,7 +88,7 @@ public class User {
     }
 
     /**
-     * Print account's summary
+     * Вывод аккаунтов пользователя
      * @param txtArea
      */
     public void printAccountsSummary(JTextArea txtArea) {
@@ -101,7 +100,7 @@ public class User {
     }
 
     /**
-     * Get count of user's accounts
+     * Геттер количества аккаунтов
      * @return
      */
     public int numAccounts() {
@@ -109,7 +108,7 @@ public class User {
     }
 
     /**
-     * Print transfer history of this account
+     * История транзакций
      * @param acctIdx
      * @param textArea
      */
@@ -118,7 +117,7 @@ public class User {
     }
 
     /**
-     * Get balance of account
+     * Геттер баланса аккаунта
      * @param acctIdx
      * @return
      */
@@ -127,7 +126,7 @@ public class User {
     }
 
     /**
-     * Get account's UID
+     * Геттер UID аккаунта
      * @param acctIdx
      * @return
      */
@@ -136,7 +135,7 @@ public class User {
     }
 
     /**
-     * Add transaction to user's account
+     * Добавление транзакции к аккаунту пользователя
      * @param acctIdx
      * @param amount
      * @param memo

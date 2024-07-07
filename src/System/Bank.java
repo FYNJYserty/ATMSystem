@@ -5,17 +5,17 @@ import java.util.Random;
 
 public class Bank {
 
-    // The bank's title
+    // Название банка
     private String bankName;
 
-    // The users of this bank
+    // Пользователи банка
     private ArrayList<User> users;
 
-    // The accounts of this bank
+    // Аккаунты банка
     private ArrayList<Account> accounts;
 
     /**
-     * Constructor
+     * Конструктор
      * @param nameOfBank
      */
     public Bank (String nameOfBank) {
@@ -25,7 +25,7 @@ public class Bank {
     }
 
     /**
-     * Getting user's UID at this bank
+     * Присвоение нового ID для пользователя
      * @return
      */
     public String getNewUserUID() {
@@ -52,7 +52,7 @@ public class Bank {
     }
 
     /**
-     * Getting account's UID at this bank
+     * Присвоение нового ID для аккаунта
      * @return
      */
     public String getNewAccountUID() {
@@ -79,7 +79,7 @@ public class Bank {
     }
 
     /**
-     * Add new user at the bank
+     * Добавление нового пользователя к банку
      * @param firstName
      * @param lastName
      * @param pin
@@ -98,7 +98,7 @@ public class Bank {
     }
 
     /**
-     * User login
+     * Проверка регистрации
      * @param userID
      * @param pin
      * @return
@@ -114,7 +114,7 @@ public class Bank {
     }
 
     /**
-     * Add new account at the bank
+     * Добавление нового аккаунта к банку
      * @param acc
      */
     public void addAccount(Account acc) {
@@ -122,7 +122,7 @@ public class Bank {
     }
 
     /**
-     * Getting name of bank
+     * Геттер названия банка
      * @return
      */
     public String getName() {

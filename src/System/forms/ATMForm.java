@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class ATMForm extends JFrame {
 
-    // Static variables
+    // Статические переменные
     public static boolean isOpenLogin = false;
     public static String name;
     public static String surname;
@@ -20,20 +20,20 @@ public class ATMForm extends JFrame {
     public static String uid;
     public static int stage;
 
-    // Static class objects
+    // Статические объекты классов
     public static User curUser;
     public static Bank curBank;
 
-    // Constructor
+    // Конструктор
     public ATMForm() {
-        // Form settings
+        // Настройки формы
         JFrame ATMFrame = new JFrame("ATM");
         ATMFrame.setSize(1200, 800);
 
-        // Elements
-        // Buttons
-        JButton LogInButton = new JButton("LogIn");
-        LogInButton.setBounds(105, 5, 100, 30);
+        // Элементы
+        // Кнопки
+        JButton LogInButton = new JButton("LogIn"); // Создание элемента
+        LogInButton.setBounds(105, 5, 100, 30); // Настройки элемента
 
         JButton NewAccountButton = new JButton("New Acc");
         NewAccountButton.setBounds(5, 5, 100, 30);
@@ -56,21 +56,21 @@ public class ATMForm extends JFrame {
         JButton quitButton = new JButton("Quit");
         quitButton.setBounds(5, 255, 200, 30);
 
-        // Labels
+        // Этикетки
         JLabel NameLabel = new JLabel("Name");
         NameLabel.setBounds(250, 5, 150, 30);
 
         JLabel LoginLabel = new JLabel("UID");
         LoginLabel.setBounds(350, 5, 150, 30);
 
-        // Text area
+        // Текстовое поле
         JTextArea textArea = new JTextArea();
         textArea.setBounds(300, 50, 870, 700);
         textArea.setBackground(Color.lightGray);
         textArea.setEditable(false);
         textArea.setFont(new Font("Times new Roman", Font.BOLD, 20));
 
-        // Adding elements in form
+        // Добавление элементов в поле
         ATMFrame.add(NewAccountButton);
         ATMFrame.add(LogInButton);
         ATMFrame.add(DoButton);
@@ -78,14 +78,14 @@ public class ATMForm extends JFrame {
         ATMFrame.add(LoginLabel);
         ATMFrame.add(textArea);
 
-        ATMFrame.add(transferHistory); // Transfer history
-        ATMFrame.add(withdrawFunds); // Withdraw funds
-        ATMFrame.add(depositFunds); // Deposit funds
-        ATMFrame.add(transferFunds); // Transfer funds
-        ATMFrame.add(quitButton); // Quit
+        ATMFrame.add(transferHistory); // История транзакций
+        ATMFrame.add(withdrawFunds); // Вывод средств
+        ATMFrame.add(depositFunds); // Депозит средств
+        ATMFrame.add(transferFunds); // Перевод средств
+        ATMFrame.add(quitButton); // Выход
 
-        // Scripts
-        // Open form for creating new account
+        // Скрипты
+        // Открытие формы для создания аккаунта
         NewAccountButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,7 +98,7 @@ public class ATMForm extends JFrame {
             }
         });
 
-        // Open form for log in an account
+        // Открытие формы для входа в аккаунт
         LogInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -111,12 +111,12 @@ public class ATMForm extends JFrame {
             }
         });
 
-        // Do button to reg or log in account
+        // Кнопка действий
         DoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (stage) {
-                    case 1:
+                    case 1: // Аккаунт зарегистрирован
                         curBank = new Bank(bank);
                         createNew(name, surname, password, curBank);
                         name = null;
@@ -124,7 +124,7 @@ public class ATMForm extends JFrame {
                         password = null;
                         bank = null;
                         break;
-                    case 2:
+                    case 2: // Выполнен вход
                         curUser = checkUser(uid, password, curBank);
                         NameLabel.setText(curUser.getName());
                         LoginLabel.setText(curUser.getUID());
@@ -135,7 +135,7 @@ public class ATMForm extends JFrame {
             }
         });
 
-        // Show transfer history button
+        // Вывод истории транзакций
         transferHistory.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -145,7 +145,7 @@ public class ATMForm extends JFrame {
             }
         });
 
-        // Withdraw funds button
+        // Вывод средств
         withdrawFunds.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -155,7 +155,7 @@ public class ATMForm extends JFrame {
             }
         });
 
-        // Deposit funds button
+        // Депозит средств
         depositFunds.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -165,7 +165,7 @@ public class ATMForm extends JFrame {
             }
         });
 
-        // Transfer funds button
+        // Перевод средств
         transferFunds.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -175,7 +175,7 @@ public class ATMForm extends JFrame {
             }
         });
 
-        // Quit from an account button
+        // Выход из аккаунта
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -192,14 +192,14 @@ public class ATMForm extends JFrame {
 
             }
         });
-        // Form settings
+        // Настройки формы
         ATMFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ATMFrame.setLayout(null);
         ATMFrame.setVisible(true);
     }
 
     /**
-     * Creates a new user
+     * Создание нового пользователя
      * @param name
      * @param surname
      * @param password
@@ -217,7 +217,7 @@ public class ATMForm extends JFrame {
     }
 
     /**
-     * Checks the existence of the user
+     * Проверка существования аккаунта
      * @param userID
      * @param pin
      * @param bank
@@ -235,7 +235,7 @@ public class ATMForm extends JFrame {
     }
 
     /**
-     * Show the transaction history for an account
+     * Показать историю транзакций
      * @param theUser
      * @param textArea
      */
@@ -256,7 +256,7 @@ public class ATMForm extends JFrame {
     }
 
     /**
-     * Process transferring funds from one account to another
+     * Процесс перевода средств из одного аккаунта в другой
      * @param theUser
      * @param textArea
      */
@@ -304,7 +304,7 @@ public class ATMForm extends JFrame {
     }
 
     /**
-     * Process a fund withdraw from an account
+     * Процесс вывода средств из аккаунта
      * @param theUser
      * @param textArea
      */
@@ -343,7 +343,7 @@ public class ATMForm extends JFrame {
     }
 
     /**
-     * Process a fund deposit to an account
+     * Процесс депозита средств в аккаунт
      * @param theUser
      * @param textArea
      */

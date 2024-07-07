@@ -4,36 +4,36 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Account {
-    // Account transactions
+    // Танзакции аккаунта
     private ArrayList<Transaction> transactions;
-    // Account name
+    // Имя аккаунта
     private String name;
-    // Account ID
+    // ID аккаунта
     private String uid;
-    // The owner of this account
+    // Владелец аккаунта
     private User holder;
 
     /**
-     * Constructor of account
+     * Конструктор
      * @param name
      * @param holder
      * @param bank
      */
     public Account (String name, User holder, Bank bank) {
-        // Giving a name for the account
+        // Присвоение имени и владельца аккаунту
         this.name = name;
         this.holder = holder;
 
-        // Giving new UID for this account
+        // Присвоение нового ID для аккаунта
         this.uid = bank.getNewAccountUID();
 
-        // Init transactions
+        // Инициализация истории транзакций
         this.transactions = new ArrayList<Transaction>();
 
     }
 
     /**
-     * Gets UID of account
+     * Геттер UID аккаунта
      * @return
      */
     public String getUID () {
@@ -41,7 +41,7 @@ public class Account {
     }
 
     /**
-     * Summary line
+     * Данные баланса аккаунта
      * @return
      */
     public String getSummaryLine() {
@@ -56,7 +56,7 @@ public class Account {
     }
 
     /**
-     * Getting balance
+     * Геттер баланса
      * @return
      */
     public double getBalance(){
@@ -68,7 +68,7 @@ public class Account {
     }
 
     /**
-     * Printing trans history for account
+     * Вывод истории транзакций аккаунта
      * @param textArea
      */
     public void printTransHistory (JTextArea textArea) {
@@ -81,7 +81,7 @@ public class Account {
     }
 
     /**
-     * Adding transaction to an account
+     * Добавление транзакции к аккаунту
      * @param amount
      * @param memo
      */
